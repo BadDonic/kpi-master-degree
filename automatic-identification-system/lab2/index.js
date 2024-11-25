@@ -1,5 +1,5 @@
 import {encode2And5MatrixBarcode} from "./encode2And5MatrixBarcode.js";
-import {drawBarcode} from "./drawBarcode.js";
+import {draw2of5Barcode} from "./drawBarcode.js";
 
 document.getElementById('symbology').addEventListener('change', render);
 document.getElementById('data').addEventListener('input', render);
@@ -10,20 +10,44 @@ function render() {
   const data = document.getElementById('data').value;
   const size = document.getElementById('size').value;
 
-  document.getElementById('barcode').innerHTML = '';
+  const barcodeElement = document.getElementById('barcode');
+  const errorElement = document.getElementById('errorMessage');
+
+  barcodeElement.innerHTML = '';
+  errorElement.innerHTML = '';
 
   if (data.trim() === '') {
     return;
   }
 
-  let barcode;
 
-  if (symbology === '2/5 Matrix Code') {
-    barcode = encode2And5MatrixBarcode(data);
+
+  try {
+    if (symbology === '2/5 Matrix Code') {
+      const barcode = encode2And5MatrixBarcode(data);
+      const canvas = draw2of5Barcode(barcode, size);
+      barcodeElement.appendChild(canvas);
+      barcodeElement.appendChild(createExportButton(canvas));
+    }
+  } catch (e) {
+    errorElement.innerHTML = e.message;
+    return;
   }
+}
 
-  const canvas = drawBarcode(barcode, size);
-  document.getElementById('barcode').appendChild(canvas);
+function createExportButton(canvas) {
+  const exportButton = document.createElement('button');
+  exportButton.id = 'exportButton';
+  exportButton.innerHTML = 'Export';
+  exportButton.addEventListener('click', () => {
+    const dataUrl = canvas.toDataURL();
+    const a = document.createElement('a');
+    a.href = dataUrl;
+    a.download = 'barcode.png';
+    a.click();
+  });
+
+  return exportButton;
 }
 
 render();
