@@ -1,4 +1,4 @@
-const digitEncodingMap = {
+export const digitEncodingMap = {
   '0': 'NNWWN',
   '1': 'WNNNW',
   '2': 'NWNNW',
@@ -11,8 +11,8 @@ const digitEncodingMap = {
   '9': 'NWNWN',
 };
 
-const START = 'WNNNN'
-const STOP = 'WNNNN'
+export const START_CODE = 'WNNNN'
+export const STOP_CODE = 'WNNNN'
 
 export const encode2And5MatrixBarcode = (data) => {
   if (!/^\d+$/.test(data)) {
@@ -21,5 +21,5 @@ export const encode2And5MatrixBarcode = (data) => {
 
   const encodedValue = data.split('').map(digit => digitEncodingMap[digit]).join('S')
 
-  return `${START}S${encodedValue}S${STOP}`;
+  return `${START_CODE}S${encodedValue}S${STOP_CODE}`;
 }
