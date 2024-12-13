@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Hunger Games</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .book-cover {
+            width: 100%;
+            max-width: 200px;
+            margin-bottom: 20px;
+        }
+
+        .book-details {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .book-info {
+            flex: 1;
+        }
+
+        .book-title {
+            font-size: 1.8rem;
+            margin: 0 0 10px;
+        }
+
+        .book-author {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .book-description {
+            margin-top: 20px;
+        }
+
+        .book-meta {
+            margin-top: 10px;
+        }
+
+        .book-meta span {
+            display: inline-block;
+            margin-right: 10px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .genres {
+            margin-top: 10px;
+            font-style: italic;
+            color: #444;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="book-details">
+        <img class="book-cover" src="<%= coverImg %>" alt="<%= title %> Cover">
+        <div class="book-info">
+            <h1 class="book-title"><%= title %></h1>
+            <p class="book-author">by <%= author %></p>
+            <p class="book-meta">
+                <span>Language: <%= language %></span>
+                <span>Pages: <%= pages %></span>
+                <span>Barcode ID: <%= barcodeId %></span>
+            </p>
+            <p class="genres">Genres: <%= genres %></p>
+        </div>
+    </div>
+    <div class="book-description">
+        <p><%= description %></p>
+    </div>
+</div>
+</body>
+</html>

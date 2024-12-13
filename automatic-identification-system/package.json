@@ -1,14 +1,20 @@
 {
   "name": "lab2",
   "version": "1.0.0",
-  "main": "src/generator.js",
+  "main": "src/pages/barcode/generator.js",
   "scripts": {
-    "start": "node_modules/.bin/http-server -p 3000"
+    "start": "nodemon src/server/server.js"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "better-sqlite3": "^11.7.0",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
     "http-server": "^14.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
   }
 }

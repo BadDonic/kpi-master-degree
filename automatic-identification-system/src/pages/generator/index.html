@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barcode Generator</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<div class="container">
+    <h1>Barcode Generator</h1>
+
+    <!-- Symbology Selection -->
+    <label for="symbology">Choose Barcode Symbology:</label>
+    <select id="symbology">
+        <option value="2/5 Matrix Code">2/5 Matrix</option>
+    </select>
+
+    <!-- Data Input -->
+    <label for="data">Enter Data to Encode:</label>
+    <input type="text" id="data" placeholder="Enter data here">
+
+    <!-- Size Selection -->
+    <label for="size">Choose Barcode Size:</label>
+    <select id="size">
+        <option value="1">100%</option>
+        <option value="2">200%</option>
+        <option value="3">300%</option>
+    </select>
+
+    <!-- Barcode Display -->
+    <div id="barcode"></div>
+    <div id="errorMessage"></div>
+</div>
+
+<script type="module" src="generator.js"></script>
+</body>
+</html>
