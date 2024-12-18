@@ -28,7 +28,7 @@ def compute_contextual_score(
     partial_score += SequenceMatcher(None, cleaned_query, content_text).ratio() * 1
 
     # User history influence
-    history_bonus = sum(¡¡
+    history_bonus = sum(
         2 for past_query in user_history
         if past_query in title_text or past_query in content_text
     )
